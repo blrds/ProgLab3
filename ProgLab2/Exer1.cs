@@ -81,5 +81,10 @@ namespace ProgLab2
             if(flag)MessageBox.Show("Такого элемента нет", "Нам (не) жаль", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
+        private void Exer1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            arrayList.Clear();
+        }
     }
 }
