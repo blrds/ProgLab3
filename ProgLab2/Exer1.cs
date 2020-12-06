@@ -84,7 +84,15 @@ namespace ProgLab2
 
         private void Exer1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            arrayList.Clear();
+            arrayList.Clear(); 
+            try
+            {
+                if (string.Equals((sender as Button).Name, @"CloseButton")) { }
+            }
+            catch (Exception ex)
+            {
+                Application.ExitThread();
+            }
         }
     }
 }

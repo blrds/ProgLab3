@@ -61,6 +61,7 @@
             this.Location = new System.Drawing.Point(100, 100);
             this.Name = "Exer4";
             this.Text = "Exer4";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Exer4_FormClosing);
             this.ResumeLayout(false);
 
         }

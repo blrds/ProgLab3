@@ -27,5 +27,17 @@ namespace ProgLab2
             this.Close();
             _f.Show();
         }
+
+        private void Exer3_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                if (string.Equals((sender as Button).Name, @"CloseButton")) { }
+            }
+            catch (Exception ex)
+            {
+                Application.ExitThread();
+            }
+        }
     }
 }
