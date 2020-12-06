@@ -53,7 +53,7 @@ namespace ProgLab2
 
         private void add_Click(object sender, EventArgs e)
         {
-            bool item = Convert.ToBoolean(Convert.ToInt32(textBox1.Text));
+            bool item = Convert.ToBoolean(Convert.ToInt32(_item.Text));
             if (inFirst.Checked) list.AddFirst(item);
             if (inLast.Checked) list.AddLast(item);
             if (inBefore.Checked)
@@ -111,7 +111,7 @@ namespace ProgLab2
             delTo.Enabled = (sender as RadioButton).Checked;
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void item_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar!='0' && e.KeyChar!='1' && !char.IsControl(e.KeyChar))
                 e.Handled = true;

@@ -31,7 +31,7 @@
             this.back = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.add = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this._item = new System.Windows.Forms.TextBox();
             this.adding = new System.Windows.Forms.GroupBox();
             this.inLast = new System.Windows.Forms.RadioButton();
             this.inAfter = new System.Windows.Forms.RadioButton();
@@ -88,14 +88,14 @@
             this.add.UseVisualStyleBackColor = true;
             this.add.Click += new System.EventHandler(this.add_Click);
             // 
-            // textBox1
+            // _item
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 32);
-            this.textBox1.MaxLength = 1;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this._item.Location = new System.Drawing.Point(6, 32);
+            this._item.MaxLength = 1;
+            this._item.Name = "_item";
+            this._item.Size = new System.Drawing.Size(100, 20);
+            this._item.TabIndex = 5;
+            this._item.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.item_KeyPress);
             // 
             // adding
             // 
@@ -107,7 +107,7 @@
             this.adding.Controls.Add(this.inLabel);
             this.adding.Controls.Add(this.label1);
             this.adding.Controls.Add(this.add);
-            this.adding.Controls.Add(this.textBox1);
+            this.adding.Controls.Add(this._item);
             this.adding.Location = new System.Drawing.Point(139, 12);
             this.adding.Name = "adding";
             this.adding.Size = new System.Drawing.Size(112, 225);
@@ -370,7 +370,7 @@
         private System.Windows.Forms.Button back;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button add;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox _item;
         private System.Windows.Forms.GroupBox adding;
         private System.Windows.Forms.RadioButton inLast;
         private System.Windows.Forms.RadioButton inAfter;
