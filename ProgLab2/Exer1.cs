@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProgLab2
@@ -29,70 +23,69 @@ namespace ProgLab2
             _f.Show();
         }
 
-        ArrayList arrayList = new ArrayList();
-
-        void arrayShow() {
-            listBox1.Items.Clear();
-            foreach(var a in arrayList)
-            {
-                listBox1.Items.Add(a.ToString());
-            }
-            count.Text = arrayList.Count.ToString();
-        }
         private void Exer1_Load(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            Random r = new Random();
-            for (int i = 0; i < 5; i++) {
-                arrayList.Add(r.Next(0, 100));
-            }
-            arrayShow();
+               
         }
-
-        private void delete_Click(object sender, EventArgs e)
-        {
-            foreach (var a in arrayList) {
-                if (listBox1.SelectedItem.ToString() == a.ToString())
-                {
-                    arrayList.Remove(a);
-                    break;
-                }
-            }
-            arrayShow();
-        }
-
-        private void add_Click(object sender, EventArgs e)
-        {
-            arrayList.Add(additem.Text);
-            arrayShow();
-        }
-
-        private void search_Click(object sender, EventArgs e)
-        {
-            bool flag = true;
-            foreach (var a in listBox1.Items) {
-                if (a.ToString() == serchitem.Text)
-                {
-                    listBox1.SelectedItem = a;
-                    flag = false;
-                    break;
-                }
-            }
-            if(flag)MessageBox.Show("Такого элемента нет", "Нам (не) жаль", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        }
-
+        List<Month> months = new List<Month>{
+                new Month{Name="January", Season="Winter"},
+                new Month{Name="February", Season="Winter"},
+                new Month{Name="March", Season="Spring"},
+                new Month{Name="April", Season="Spring"},
+                new Month{Name="May", Season="Spring"},
+                new Month{Name="June", Season="Summer"},
+                new Month{Name="Jule", Season="Summer"},
+                new Month{Name="August", Season="Summer"},
+                new Month{Name="September", Season="Autumn"},
+                new Month{Name="October", Season="Autumn"},
+                new Month{Name="November", Season="Autumn"},
+                new Month{Name="December", Season="Winter"}
+            };
         private void Exer1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            arrayList.Clear(); 
+            
             try
-            {
+            {                
                 if (string.Equals((sender as Button).Name, @"CloseButton")) { }
             }
             catch (Exception ex)
             {
                 Application.ExitThread();
             }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+                e.Handled = true;
+        }
+
+        private void Index_Click(object sender, EventArgs e)
+        {
+            var newList = months.Where(x => x.Name.Length > Convert.ToInt32(textBox1.Text));
+            label1.Text = string.Join("\n", newList);
+        }
+
+        private void Season_Click(object sender, EventArgs e)
+        {
+
+            var newList = months.Where(x =>(
+                (x.Season.Contains("Winter") && Winter.Checked) ||
+                (x.Season.Contains("Spring") && Spring.Checked) ||
+                (x.Season.Contains("Summer") && Summer.Checked) ||
+                (x.Season.Contains("Autumn") && Autumn.Checked) 
+            ));
+            label1.Text = string.Join("\n", newList.OrderBy(x=>x.Season));
+        }
+
+        private void Alphabet_Click(object sender, EventArgs e)
+        {
+            label1.Text = string.Join("\n", months.OrderBy(x => x.Name));
+        }
+
+        private void Parametrs_Click(object sender, EventArgs e)
+        {
+            label1.Text = string.Join("\n", months.Where(x => x.Name.Length > Convert.ToInt32(textBox2.Text) && x.Name.Contains(textBox3.Text)));
         }
     }
 }

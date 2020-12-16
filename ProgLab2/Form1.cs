@@ -17,6 +17,7 @@ namespace ProgLab2
             InitializeComponent();
         }
 
+        List<Pupil> pupils = new List<Pupil>();
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -27,16 +28,6 @@ namespace ProgLab2
             if (radioButton2.Checked)
             {
                 Exer2 f = new Exer2(this);
-                f.Show();
-            }
-            if (radioButton3.Checked)
-            {
-                Exer3 f = new Exer3(this);
-                f.Show();
-            }
-            if (radioButton4.Checked)
-            {
-                Exer4 f = new Exer4(this);
                 f.Show();
             }
         }
